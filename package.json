@@ -1,0 +1,15 @@
+{
+  "name": "restauranteapp",
+  "version": "1.0.0",
+  "description": "realizamos una app con funciones de crud y 2 perfiles de usuario",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Juan Jesus Perez Castillo",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mongoose": "^8.0.0"
+  }
+}
