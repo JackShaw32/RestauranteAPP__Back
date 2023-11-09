@@ -4,12 +4,17 @@
   "description": "realizamos una app con funciones de crud y 2 perfiles de usuario",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Juan Jesus Perez Castillo",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "mongoose": "^8.0.0"
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0",
+    "nodemon": "^3.0.1"
   }
 }
