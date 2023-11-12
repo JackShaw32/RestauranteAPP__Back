@@ -1,6 +1,5 @@
 const User = require("../models/user");
-const bcrypt = require("bcryptjs");
-const jwt = require("../utils/jwt");
+const bcrypt = require('bcrypt')
 
 async function register(req, res) {
     const { firstname, lastname, email, password, avatar } = req.body;
@@ -17,9 +16,21 @@ async function register(req, res) {
         role: "user",
         avatar: avatar
     });
+
+    // encriptar la pass
+    const salt = bcrypt.genSaltSync(10)
+    const hashPassword = bcrypt.hashSync(password, salt)
+    user.password = hashPassword
+
+    try{
+        await user.save()
+        res.status(200).send({msg: 'Usuario guardado'})
+    }
+    catch(error){
+        res.status(400).send({msg: `Error al guardar los datos: ${error}`})
+    }
 };
 
 module.exports = {
     register,
-    login,
 };
