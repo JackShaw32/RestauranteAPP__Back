@@ -1,11 +1,14 @@
+// La carpeta utils sirve para hacer funciones que ayudan a mi app. Como por ejemplo las imagenes de los users
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY; //Leemos la clave del archivo .env
 
 function createAccessToken(user) {
+    // fecha de expiracion
     const expToken = new Date();
     expToken.setHours(expToken.getHours() + 3);
 
+    // datos del token
     const payload = {
         token_type: "access",
         user_id: user._id,
@@ -13,6 +16,7 @@ function createAccessToken(user) {
         exp: expToken.getTime(),
     };
 
+    // generar el token
     return jwt.sign(payload, JWT_SECRET_KEY);
 };
 
