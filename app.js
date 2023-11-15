@@ -11,8 +11,10 @@ const app = express()
 
 //Configurar Header HTTP - configurar Cors y hacer peticiones
 app.use(cors())
+
 //importar Rutas
 const authRoutes = require('./router/auth')
+const userRoutes = require('./router/user')
 
 //Configurar Body parser
 app.use(bodyParser.urlencoded({extended: true}))
@@ -23,5 +25,6 @@ app.use(express.static('uploads'))
 
 //Configurar Rutas
 app.use(`/api/${version}`,authRoutes)
+app.use(`/api/${version}`,userRoutes)
 
 module.exports = app
