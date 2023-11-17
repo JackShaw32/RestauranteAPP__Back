@@ -15,6 +15,7 @@ app.use(cors())
 //importar Rutas
 const authRoutes = require('./router/auth')
 const userRoutes = require('./router/user')
+const foodRoutes = require('./router/food')
 
 //Configurar Body parser
 app.use(bodyParser.urlencoded({extended: true}))
@@ -26,5 +27,6 @@ app.use(express.static('uploads'))
 //Configurar Rutas
 app.use(`/api/${version}`,authRoutes)
 app.use(`/api/${version}`,userRoutes)
+app.use(`/api/${version}`,foodRoutes)
 
 module.exports = app
