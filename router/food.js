@@ -9,5 +9,7 @@ const md_upload = multiparty( { uploadDir: './uploads/food'} )
 const api = express.Router();
 
 api.post('/food', [md_upload] ,FoodController.createFood)
+api.get('/foods' ,FoodController.getFoods)
+api.put('/food/:id', [md_upload] ,FoodController.updateFoods)
 
 module.exports = api
