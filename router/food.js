@@ -11,5 +11,6 @@ const api = express.Router();
 api.post('/food', [md_upload] ,FoodController.createFood)
 api.get('/foods' ,FoodController.getFoods)
 api.put('/food/:id', [md_upload] ,FoodController.updateFoods)
+api.delete('/food/:id' ,FoodController.deleteFoods)
 
 module.exports = api

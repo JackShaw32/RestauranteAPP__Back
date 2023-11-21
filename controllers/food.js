@@ -40,18 +40,28 @@ async function updateFoods(req, res){
     }
 
     try{
-
+        await Food.findByIdAndUpdate({_id: id}, foodData)
+        res.status(200).send({msg: 'Se actualizo correctamente'})
     }
     catch(err){
         res.status(400).send({msg: 'Error al actualizar la informacion'})
     }
+}
 
-    // console.log(foodData) -- No me muestra la ruta de la imagen en consola, pero si  me agrega la imagen en la carpeta utils
-    res.status(200).send({msg: 'todo okkkkk'})
+async function deleteFoods(req, res){
+    const {id} = req.params;
+    try{
+        await Food.findByIdAndDelete(id)
+        res.status(200).send({msg: 'Se elimino la comida'})
+    }
+    catch(error){
+        res.status(400).send({msg: 'Error al aliminar la comida'})
+    }
 }
 
 module.exports = {
     createFood,
     getFoods,
     updateFoods,
+    deleteFoods,
 }
