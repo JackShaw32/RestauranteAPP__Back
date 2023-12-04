@@ -2,15 +2,17 @@ const image = require("../utils/getFileName");
 const Food = require("../models/food");
 
 async function createFood(req, res) {
-  const newMovie = new Food(req.body);
+  const newFood = new Food(req.body);
 
-  if (req.files.image) {
+  const imageFood = req.files.image;
+
+  if (imageFood !== undefined) {
     const imagePath = image.getFileName(req.files.image);
-    newMovie.image = imagePath;
+    newFood.image = imagePath;
   }
 
   try {
-    await newMovie.save();
+    await newFood.save();
     res.status(200).send({ msg: "Comida guardada en la base de datos" });
   } catch (error) {
     res.status(400).send({ msg: `Error en el servidor: ${error}` });
