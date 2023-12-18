@@ -56,10 +56,9 @@ async function getUserRequests(req, res) {
 // Nueva función para actualizar el estado del pedido
 async function updateRequestStatus(req, res) {
   const { request_id } = req.params;
-  const { newStatus } = req.body;
-
+  const { confirmado: newStatus } = req.body;
   try {
-    const updatedRequest = await Request.findByIdAndUpdate(
+    const updatedRequest = await Pedido.findByIdAndUpdate(
       request_id,
       { confirmado: newStatus },
       { new: true }
@@ -68,7 +67,6 @@ async function updateRequestStatus(req, res) {
     if (!updatedRequest) {
       return res.status(404).send({ msg: "No se ha encontrado el pedido" });
     }
-
     res.status(200).send(updatedRequest);
   } catch (err) {
     console.error(err);
