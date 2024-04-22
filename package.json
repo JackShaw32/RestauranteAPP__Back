@@ -7,7 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "Juan Jesus Perez Castillo",
+  "author": "Juan Jesus Perez Castillo y Raul Eduardo Cabral",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
